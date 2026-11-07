@@ -1,0 +1,4 @@
+interface:
+  display_name: "Browser Verification"
+  short_description: "Verify browser UI safely."
+  default_prompt: "Use browser-verification for page opens, layout checks, Playwright verification, and screenshots."

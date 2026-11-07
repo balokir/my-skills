@@ -1,0 +1,7 @@
+interface:
+  display_name: "Persistent Work Context"
+  short_description: "Resume repository workstreams safely"
+  default_prompt: "Use $persistent-work-context to resume the relevant repository workstream from authoritative state."
+
+policy:
+  allow_implicit_invocation: true

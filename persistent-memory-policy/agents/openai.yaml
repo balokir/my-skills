@@ -1,0 +1,4 @@
+interface:
+  display_name: "Persistent Memory Policy"
+  short_description: "Scope and govern durable project memory"
+  default_prompt: "Use $persistent-memory-policy to recall or store durable project knowledge safely."

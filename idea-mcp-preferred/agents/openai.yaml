@@ -1,0 +1,4 @@
+interface:
+  display_name: "IDEA MCP Preferred"
+  short_description: "Prefer IDEA MCP over shell where practical"
+  default_prompt: "Use $idea-mcp-preferred to prefer IntelliJ IDEA MCP tools over shell commands where practical."
