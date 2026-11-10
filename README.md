@@ -29,30 +29,24 @@ create symbolic links. Run the following from the repository root in
 PowerShell:
 
 ```powershell
-$skillsSource = (Get-Location).Path
-$skillsHome = Join-Path $env:USERPROFILE ".agents\skills"
+node setup.mjs install
+```
 
-New-Item -ItemType Directory -Force -Path $skillsHome | Out-Null
+The setup script discovers repository directories containing `SKILL.md` and
+links them under `~/.agents/skills`. It refuses to overwrite unexpected paths
+and leaves unrelated installed skills untouched. Other available actions are:
 
-Get-ChildItem -LiteralPath $skillsSource -Directory |
-    Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName "SKILL.md") } |
-    ForEach-Object {
-        $linkPath = Join-Path $skillsHome $_.Name
-        if (Test-Path -LiteralPath $linkPath) {
-            throw "Skill destination already exists: $linkPath"
-        }
-
-        New-Item -ItemType SymbolicLink -Path $linkPath -Target $_.FullName |
-            Out-Null
-    }
+```powershell
+node setup.mjs status
+node setup.mjs uninstall
 ```
 
 Directory symlinks keep Git operations in this repository independent from
 Codex's own state in `~/.codex`. A checkout or pull may replace files inside a
 skill directory without breaking the link to that directory.
 
-Start a new Codex session after adding or removing skills, or after changing
-activation metadata in a `SKILL.md` front matter block.
+Codex detects skill changes automatically. If a change does not appear, start
+a new Codex session.
 
 ## Updating Skills
 
