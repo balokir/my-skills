@@ -3,7 +3,7 @@ name: idea-mcp-preferred
 description: >
   Use whenever a task will call or discover IntelliJ IDEA MCP tools. Prefer IDEA MCP for supported repository
   operations after bootstrapping, load this guidance completely through the workspace shell before the first IDEA MCP
-  operation, and never use mcp__idea__read_file or mcp__idea__execute_terminal_command.
+  operation, and never use mcp__idea__execute_terminal_command.
 ---
 
 # IDEA MCP Preferred
@@ -11,9 +11,7 @@ description: >
 ## Rule
 
 Do not invoke `mcp__idea__execute_terminal_command`. Use the workspace shell for
-every shell command. Do not invoke `mcp__idea__read_file`. This method is
-disabled! Read file contents with bounded shell commands and page large files
-when complete coverage is required.
+every shell command.
 
 Before using this workspace shell for project work, check whether an IDEA MCP
 tool can do the same job with acceptable fidelity. Prefer IDEA MCP when it
@@ -52,8 +50,6 @@ Use this workspace shell for:
   runs, or report/log inspection not exposed through IDEA MCP.
 - Multi-file patching, file creation, or edits where `apply_patch` is clearer
   and safer than targeted replacement.
-- Reading file contents with bounded or paged output;
-  `mcp__idea__read_file` is prohibited as described above.
 
 ## Run Configuration Notes
 
